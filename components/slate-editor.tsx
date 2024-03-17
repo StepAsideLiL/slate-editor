@@ -28,7 +28,10 @@ export default function SlateEditor() {
 
   return (
     <Slate editor={editor} initialValue={initialValue}>
-      <Editable className="focus-visible:outline-none" />
+      <Editable
+        className="focus-visible:outline-none"
+        placeholder="Write something"
+      />
     </Slate>
   );
 }
