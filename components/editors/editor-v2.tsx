@@ -16,10 +16,11 @@ import {
   withReact,
   ReactEditor,
   RenderElementProps,
+  RenderLeafProps,
 } from "slate-react";
 
 type CustomElement = { type: "paragraph" | "code"; children: CustomText[] };
-type CustomText = { text: string };
+type CustomText = { text: string; bold?: boolean };
 
 declare module "slate" {
   interface CustomTypes {
@@ -48,12 +49,17 @@ export default function EditorV2() {
     }
   }, []);
 
+  const renderLeaf = useCallback((props: RenderLeafProps) => {
+    return <Leaf {...props} />;
+  }, []);
+
   return (
     <Slate editor={editor} initialValue={initialValue}>
       <Editable
         className="focus-visible:outline-none"
         placeholder="Write something"
         renderElement={renderElement}
+        renderLeaf={renderLeaf}
         onKeyDown={(event) => {
           if (event.key === "`" && event.ctrlKey) {
             // Prevent the "`" from being inserted by default.
@@ -69,6 +75,10 @@ export default function EditorV2() {
                 match: (n) => Element.isElement(n) && Editor.isBlock(editor, n),
               },
             );
+          }
+          if (event.key === "b" && event.ctrlKey) {
+            event.preventDefault();
+            Editor.addMark(editor, "bold", true);
           }
         }}
       />
@@ -86,4 +96,16 @@ const CodeElement = (props: RenderElementProps) => {
 
 const DefaultElement = (props: RenderElementProps) => {
   return <p {...props.attributes}>{props.children}</p>;
+};
+
+// Define a React component to render leaves with bold text.
+const Leaf = (props: RenderLeafProps) => {
+  return (
+    <span
+      {...props.attributes}
+      style={{ fontWeight: props.leaf.bold ? "bold" : "normal" }}
+    >
+      {props.children}
+    </span>
+  );
 };
