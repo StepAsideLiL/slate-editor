@@ -79,7 +79,7 @@ export default function SlateEditor() {
 const CodeElement = (props: RenderElementProps) => {
   return (
     <pre {...props.attributes}>
-      <code>{props.children}</code>
+      <code className="rounded bg-muted px-1 py-[1px]">{props.children}</code>
     </pre>
   );
 };
