@@ -19,7 +19,7 @@ import {
 } from "slate-react";
 
 type CustomElement = { type: "paragraph" | "code"; children: CustomText[] };
-type CustomText = { text: string };
+type CustomText = { text: string; bold?: boolean };
 
 declare module "slate" {
   interface CustomTypes {
