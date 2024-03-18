@@ -1,4 +1,5 @@
 import EditorV1 from "@/components/editors/editor-v1";
+import EditorV2 from "@/components/editors/editor-v2";
 
 export default function Page() {
   return (
@@ -34,7 +35,7 @@ export default function Page() {
         </div>
 
         <div className="min-h-20 border border-muted p-3">
-          <EditorV1 />
+          <EditorV2 />
         </div>
       </section>
     </main>
