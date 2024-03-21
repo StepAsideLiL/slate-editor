@@ -45,7 +45,8 @@ export default function Page() {
         <div className="text-muted-foreground">
           <h1 className="text-xl">Editor 3</h1>
           <p>
-            Features of Editor 1, and toggle bold characters with{" "}
+            Features of Editor 1, and toggle characters between bold and normal
+            with{" "}
             <span className="font-mono">
               <kbd className="rounded bg-muted px-1 py-[1px]">ctrl</kbd> +{" "}
               <kbd className="rounded bg-muted px-1 py-[1px]">b</kbd>
