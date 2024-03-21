@@ -19,7 +19,10 @@ import {
   RenderLeafProps,
 } from "slate-react";
 
-type CustomElement = { type: "paragraph" | "code"; children: CustomText[] };
+type CustomElement = {
+  type: "paragraph" | "code" | null;
+  children: CustomText[];
+};
 type CustomText = { text: string; bold?: boolean };
 
 declare module "slate" {
