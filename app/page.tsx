@@ -11,8 +11,8 @@ export default function Page() {
           <p>
             Toggle between code block and paragraph with{" "}
             <span className="font-mono">
-              <code className="rounded bg-muted px-1 py-[1px]">ctrl</code> +{" "}
-              <code className="rounded bg-muted px-1 py-[1px]">`</code>
+              <kbd className="rounded bg-muted px-1 py-[1px]">ctrl</kbd> +{" "}
+              <kbd className="rounded bg-muted px-1 py-[1px]">`</kbd>
             </span>
           </p>
         </div>
