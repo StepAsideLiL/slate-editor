@@ -24,12 +24,13 @@ export default function Page() {
 
       <section className="space-y-3 px-10">
         <div className="text-muted-foreground">
-          <h1 className="text-xl">Editor 1</h1>
+          <h1 className="text-xl">Editor 2</h1>
           <p>
-            Toggle between code block and paragraph with{" "}
+            Features of Editor V1, and turn normal characters to bold characters
+            with{" "}
             <span className="font-mono">
-              <code className="rounded bg-muted px-1 py-[1px]">ctrl</code> +{" "}
-              <code className="rounded bg-muted px-1 py-[1px]">`</code>
+              <kbd className="rounded bg-muted px-1 py-[1px]">ctrl</kbd> +{" "}
+              <kbd className="rounded bg-muted px-1 py-[1px]">b</kbd>
             </span>
           </p>
         </div>
