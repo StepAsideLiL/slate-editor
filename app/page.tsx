@@ -1,10 +1,11 @@
 import EditorV1 from "@/components/editors/editor-v1";
 import EditorV2 from "@/components/editors/editor-v2";
 import EditorV3 from "@/components/editors/editor-v3";
+import EditorV4 from "@/components/editors/editor-v4";
 
 export default function Page() {
   return (
-    <main className="container space-y-10">
+    <main className="container space-y-10 pb-20">
       {/* <SlateEditor /> */}
       <section className="space-y-3 px-10">
         <div className="text-muted-foreground">
@@ -56,6 +57,17 @@ export default function Page() {
 
         <div className="min-h-20 border border-muted p-3">
           <EditorV3 />
+        </div>
+      </section>
+
+      <section className="space-y-3 px-10">
+        <div className="text-muted-foreground">
+          <h1 className="text-xl">Editor 4</h1>
+          <p>Features of Editor 3, and save the content</p>
+        </div>
+
+        <div className="min-h-20 border border-muted p-3">
+          <EditorV4 />
         </div>
       </section>
     </main>
