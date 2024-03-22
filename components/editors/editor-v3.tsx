@@ -18,6 +18,8 @@ import {
   RenderElementProps,
   RenderLeafProps,
 } from "slate-react";
+import { Bold, Code } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type CustomElement = {
   type: "paragraph" | "code" | null;
@@ -91,40 +93,64 @@ export default function EditorV3() {
 
   return (
     <Slate editor={editor} initialValue={initialValue}>
+      <div className="space-x-2 pb-2">
+        <Button
+          variant={"outline"}
+          size={"icon"}
+          onMouseDown={(event) => {
+            event.preventDefault();
+            CustomEditor.toggleBoldMark(editor);
+          }}
+        >
+          <Bold className="size-3" />
+        </Button>
+
+        <Button
+          variant={"outline"}
+          size={"icon"}
+          onMouseDown={(event) => {
+            event.preventDefault();
+            CustomEditor.toggleCodeBlock(editor);
+          }}
+        >
+          <Code className="size-3" />
+        </Button>
+      </div>
+
       <Editable
         className="focus-visible:outline-none"
         placeholder="Write something"
         renderElement={renderElement}
         renderLeaf={renderLeaf}
         onKeyDown={(event) => {
-          // if (event.key === "`" && event.ctrlKey) {
-          //   event.preventDefault();
-          //   CustomEditor.toggleCodeBlock(editor);
-          // }
-
-          // if (event.key === "b" && event.ctrlKey) {
-          //   event.preventDefault();
-          //   CustomEditor.toggleBoldMark(editor);
-          // }
-
-          if (!event.ctrlKey) {
-            return;
+          if (event.key === "`" && event.ctrlKey) {
+            event.preventDefault();
+            CustomEditor.toggleCodeBlock(editor);
           }
 
-          // Replace the `onKeyDown` logic with our new commands.
-          switch (event.key) {
-            case "`": {
-              event.preventDefault();
-              CustomEditor.toggleCodeBlock(editor);
-              break;
-            }
-
-            case "b": {
-              event.preventDefault();
-              CustomEditor.toggleBoldMark(editor);
-              break;
-            }
+          if (event.key === "b" && event.ctrlKey) {
+            event.preventDefault();
+            CustomEditor.toggleBoldMark(editor);
           }
+
+          // if (!event.ctrlKey) {
+          //   return;
+          // }
+
+          // // Replace the `onKeyDown` logic with our new commands.
+          // switch (event.key) {
+          //   case "`": {
+          //     event.preventDefault();
+          //     CustomEditor.toggleCodeBlock(editor);
+          //     break;
+          //   }
+
+          //   case "b": {
+          //     event.preventDefault();
+          //     CustomEditor.toggleBoldMark(editor);
+          //     break;
+          //   }
+          // }
         }}
       />
     </Slate>
