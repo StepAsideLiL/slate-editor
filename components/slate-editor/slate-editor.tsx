@@ -4,7 +4,12 @@ import { useCallback, useMemo, useState } from "react";
 import { Editable, RenderElementProps, Slate, withReact } from "slate-react";
 import { withHistory } from "slate-history";
 import { Descendant, createEditor, Range, Editor, Transforms } from "slate";
-import { H1Element, H2Element, H3Element } from "./slate-custom-types";
+import {
+  H1Element,
+  H2Element,
+  H3Element,
+  Paragraph,
+} from "./slate-custom-types";
 
 export default function SlateEditor() {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
@@ -134,6 +139,15 @@ const insertBlock = (editor: Editor, blockName: string) => {
         children: [{ text: "" }],
       };
       Transforms.insertNodes(editor, header3);
+      Transforms.move(editor);
+      break;
+    default:
+      const paragraph: Paragraph = {
+        type: "paragraph",
+        character: "",
+        children: [{ text: "" }],
+      };
+      Transforms.insertNodes(editor, paragraph);
       Transforms.move(editor);
       break;
   }
