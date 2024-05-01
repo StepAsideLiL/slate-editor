@@ -1,8 +1,9 @@
+export type CustomText = { text: string };
+
 export type CustomElement = {
   type: "paragraph" | "h1" | "h2" | "h3";
   children: CustomText[];
 };
-export type CustomText = { text: string };
 
 export declare module "slate" {
   interface CustomTypes {
