@@ -29,3 +29,9 @@ export type H3Element = {
   character: string;
   children: CustomText[];
 };
+
+export type Paragraph = {
+  type: "p";
+  character: string;
+  children: CustomText[];
+};
