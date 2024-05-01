@@ -31,7 +31,7 @@ export type H3Element = {
 };
 
 export type Paragraph = {
-  type: "p";
+  type: "paragraph";
   character: string;
   children: CustomText[];
 };
